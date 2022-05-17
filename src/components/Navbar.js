@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import logo from "../assets/imgs/logo.png";
 const Navbar = () => {
   return (
@@ -33,13 +34,9 @@ const Navbar = () => {
           >
             <ul class="navbar-nav mb-2 mb-lg-0">
               <li class="nav-item">
-                <a
-                  class="nav-link active"
-                  aria-current="page"
-                  href="./index.html"
-                >
+                <Link class="nav-link active" to="/">
                   Home
-                </a>
+                </Link>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="./pages/explore.html">
