@@ -1,9 +1,28 @@
 import google from "./../assets/imgs/google.svg";
 import facebook from "./../assets/imgs/facebook.svg";
 import poster from "./../assets/imgs/auth.svg";
-
+import { useState } from "react";
+import  {auth}  from "../firebase-config";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 const Signup = () => {
+
+  const [resgisterEmail,setRegesterEmail] = useState("");
+  const [registerPassword, setRegesterPassword] = useState("");
+ 
+  const register = async(e) =>{
+    e.preventDefault()
+    try{
+    const user = await createUserWithEmailAndPassword(auth,resgisterEmail,registerPassword)
+        console.log(user)
+    }catch(error){
+      console.log(error.message);
+    }
+   
+
+  };
+
   return (
+      
     <div className="signup">
       <header className="d-flex align-items-center justify-content-center text-white">
         <p className="text-center mb-0">
@@ -46,6 +65,7 @@ const Signup = () => {
                     type="text"
                     className="form-control"
                     placeholder="Email"
+                    onChange={(event)=>{setRegesterEmail(event.target.value);}}
                   />
                 </div>
                 <div className="form-group">
@@ -53,6 +73,7 @@ const Signup = () => {
                     type="password"
                     className="form-control"
                     placeholder="Password"
+                    onChange={(event)=>{setRegesterPassword(event.target.value);}}
                   />
                 </div>
                 <div className="form-group">
@@ -64,7 +85,7 @@ const Signup = () => {
                 </div>
 
                 <div className="mt-3">
-                  <button className="btn btn-primary w-100">Sign up</button>
+                  <button className="btn btn-primary w-100" onClick={register}>Sign up</button>
                 </div>
                 <span className="or fw-bolder">or</span>
                 <div className="mt-3">
