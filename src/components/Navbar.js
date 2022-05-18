@@ -3,13 +3,13 @@ import logo from "../assets/imgs/logo.png";
 const Navbar = () => {
   return (
     <div id="nav__wrapper">
-      <nav class="navbar navbar-expand-lg navbar-light justify-content-between">
-        <div class="container">
-          <a class="navbar-brand" href="./index.html">
-            <img src={logo} alt="" class="" />
-          </a>
+      <nav className="navbar navbar-expand-lg navbar-light justify-content-between">
+        <div className="container">
+          <Link className="navbar-brand" to="/">
+            <img src={logo} alt="" className="" />
+          </Link>
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
@@ -17,45 +17,45 @@ const Navbar = () => {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
-          <form class="search d-flex position-relative d-lg-flex d-none">
+          <form className="search d-flex position-relative d-lg-flex d-none">
             <input
-              class="form-control me-2"
+              className="form-control me-2"
               type="search"
               placeholder="looking for a course?"
               aria-label="Search"
             />
-            <i class="fa-solid fa-magnifying-glass"></i>
+            <i className="fa-solid fa-magnifying-glass"></i>
           </form>
           <div
-            class="collapse navbar-collapse justify-content-end"
+            className="collapse navbar-collapse justify-content-end"
             id="navbarSupportedContent"
           >
-            <ul class="navbar-nav mb-2 mb-lg-0">
-              <li class="nav-item">
-                <Link class="nav-link active" to="/">
-                  Home
+            <ul className="navbar-nav mb-2 mb-lg-0">
+              <li className="nav-item">
+                <Link className="nav-link" to="/">
+                  HOME
                 </Link>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="./pages/explore.html">
+              <li className="nav-item">
+                <Link className="nav-link" to="/explore">
                   EXPLORE
-                </a>
+                </Link>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="./pages/login.html">
-                  Login
-                </a>
+              <li className="nav-item">
+                <Link className="nav-link" to="/login">
+                  LOGIN
+                </Link>
               </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link btn-primary signup"
+              <li className="nav-item">
+                <Link
+                  className="nav-link btn-primary signup"
                   id="signup__btn"
-                  href="./pages/register.html"
+                  to="/signup"
                 >
                   Sign up
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

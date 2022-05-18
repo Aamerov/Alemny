@@ -215,7 +215,6 @@ footer hr {
 
 @media (min-width: 768px) {
   nav .navbar-brand img {
-    width: 10vw;
   }
 }
 .calendar-day {

@@ -10,95 +10,99 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 const Home = () => {
   return (
     <div className="home">
-      <header class="d-flex align-items-center justify-content-center text-white">
-        <p class="text-center mb-0">
+      <header className="d-flex align-items-center justify-content-center text-white">
+        <p className="text-center mb-0">
           Join now and enjoy your first free course
         </p>
       </header>
       <section id="hero">
-        <div class="container">
-          <div class="row mx-0 w-100 align-items-center">
-            <div class="col-md-8">
+        <div className="container">
+          <div className="row mx-0 w-100 align-items-center">
+            <div className="col-md-8">
               <h1>YOUR ROAD TO SUCCESS STARTS FROM HERE </h1>
               <p id="header__text">
                 Thousands of free courses , Best instructors all over egypt and
                 Also enjoy cheap prices and alot of offers.
               </p>
             </div>
-            <div class="col-md-4">
-              <img src={hero} class="w-100" alt="" />
+            <div className="col-md-4">
+              <img src={hero} className="w-100" alt="" />
             </div>
           </div>
         </div>
       </section>
       <section id="partners">
-        <div class="container" id="parnters">
-          <div class="row w-100 mx-0" id="partners__imgs">
-            <div class="col-md-3">
-              <img class="imageAlternation" src={community} alt="" />
+        <div className="container" id="parnters">
+          <div className="row w-100 mx-0" id="partners__imgs">
+            <div className="col-md-3">
+              <img className="imageAlternation" src={community} alt="" />
             </div>
-            <div class="col-md-3">
+            <div className="col-md-3">
               <img id="intrast" src={intrast} alt="" />
             </div>
-            <div class="col-md-3">
-              <img class="imageAlternation" src={alex} alt="" />
+            <div className="col-md-3">
+              <img className="imageAlternation" src={alex} alt="" />
             </div>
-            <div class="col-md-3">
-              <img class="imageAlternation" src={udemy} alt="" />
+            <div className="col-md-3">
+              <img className="imageAlternation" src={udemy} alt="" />
             </div>
           </div>
         </div>
       </section>
 
       <section id="stacks">
-        <div class="container">
-          <h2 class="section__title">OUR STACKS</h2>
-          <nav class="nav-tabs">
-            <a class="nav-link" aria-current="page" href="./pages/explore.html">
+        <div className="container">
+          <h2 className="section__title">OUR STACKS</h2>
+          <nav className="nav-tabs">
+            <a
+              className="nav-link"
+              aria-current="page"
+              href="./pages/explore.html"
+            >
               SOFTWARE ENGINEER
             </a>
-            <a class="nav-link mx-3" href="./pages/explore.html">
+            <a className="nav-link mx-3" href="./pages/explore.html">
               BUSINESS
             </a>
-            <a class="nav-link" href="./pages/explore.html">
+            <a className="nav-link" href="./pages/explore.html">
               ACCOUNTING
             </a>
-            <a class="nav-link mx-3" href="./pages/explore.html">
+            <a className="nav-link mx-3" href="./pages/explore.html">
               DATA SCIENCE
             </a>
-            <a class="nav-link me-3" href="./pages/explore.html">
+            <a className="nav-link me-3" href="./pages/explore.html">
               ROBOT ENGINEER
             </a>
-            <a class="nav-link" href="./pages/explore.html">
+            <a className="nav-link" href="./pages/explore.html">
               STATISTICIAN{" "}
             </a>
           </nav>
-          <div class="owl-carousel row w-100 mx-0">
-            <div class="card">
-              <img src={card} class="card-img-top" alt="..." />
-              <span class="label">POPULAR</span>
-              <div class="card-body">
-                <div class="d-flex align-items-center justify-content-between">
+          <div className="owl-carousel row w-100 mx-0">
+            <div className="card">
+              <img src={card} className="card-img-top" alt="..." />
+              <span className="label">POPULAR</span>
+              <div className="card-body">
+                <div className="d-flex align-items-center justify-content-between">
                   <a href="./pages/explore.html">
-                    <h5 class="card-title">ROBOT ENGINEER</h5>
+                    <h5 className="card-title">ROBOT ENGINEER</h5>
                   </a>
-                  <div class="d-flex align-items-center">
-                    <i class="fa-regular fa-clock"></i>
-                    <span class="ms-2">6-hrs</span>
+                  <div className="d-flex align-items-center">
+                    <i className="fa-regular fa-clock"></i>
+                    <span className="ms-2">6-hrs</span>
                   </div>
                 </div>
-                <div class="teacher-info d-flex align-items-center justify-content-between">
-                  <div class="d-flex align-items-center">
+                <div className="teacher-info d-flex align-items-center justify-content-between">
+                  <div className="d-flex align-items-center">
                     <img src={lecturer} alt="" />
-                    <span class="me-2">Mohamed Ahmed</span>
+                    <span className="me-2">Mohamed Ahmed</span>
                   </div>
-                  <div class="d-flex align-items-end">
+                  <div className="d-flex align-items-end">
                     <FontAwesomeIcon icon={faStar} />
                     <FontAwesomeIcon icon={faStar} />
                     <FontAwesomeIcon icon={faStar} />
                     <FontAwesomeIcon icon={faStar} />
                     <FontAwesomeIcon icon={faStar} />
-                    <span class="ms-3">4.1(5000)</span>
+                    <span className="ms-3">4.1(5000)</span>
                   </div>
                 </div>
               </div>
@@ -108,21 +112,21 @@ const Home = () => {
       </section>
 
       <section id="calender">
-        <div class="container theme-showcase">
-          <h2 class="section__title">UPCOMING EVENTS</h2>
-          <div id="holder" class="row"></div>
+        <div className="container theme-showcase">
+          <h2 className="section__title">UPCOMING EVENTS</h2>
+          <div id="holder" className="row"></div>
         </div>
       </section>
       <section id="learn-more">
         <div id="shadow__overlay">
-          <div class="container">
-            <div class="row mx-0 w-100">
-              <div class="col-md-6">
-                <h2 class="fw-bolder text-white col-md-11">
+          <div className="container">
+            <div className="row mx-0 w-100">
+              <div className="col-md-6">
+                <h2 className="fw-bolder text-white col-md-11">
                   JOIN MORE THAN TWENTY THOUSAND STUDENTS
                 </h2>
                 <a href="./pages/register.html">
-                  <button class="btn btn-primary" id="calltoaction__button">
+                  <button className="btn btn-primary" id="calltoaction__button">
                     JOIN NOW
                   </button>
                 </a>
@@ -147,7 +151,7 @@ var date = date || new Date(),
     last = new Date(year, month + 1, 0),
     startingDay = first.getDay(),
     thedate = new Date(year, month, 1 - startingDay),
-    dayclass = lastmonthcss,
+    dayclassName = lastmonthcss,
     today = new Date(),
     i, j;
 if (mode === 'week') {
@@ -164,38 +168,38 @@ if (mode === 'week') {
 }
 
 }}
-<table class="calendar-table table table-condensed table-tight">
+<table className="calendar-table table table-condensed table-tight">
   <thead>
     <tr>
       <td colspan="7" style="text-align: center">
         <table style="white-space: nowrap; width: 100%">
           <tr>
             <td style="text-align: left;">
-              <span class="btn-group">
-                <button class="js-cal-prev btn btn-default">&lt;</button>
-                <button class="js-cal-next btn btn-default">&gt;</button>
+              <span className="btn-group">
+                <button className="js-cal-prev btn btn-default">&lt;</button>
+                <button className="js-cal-next btn btn-default">&gt;</button>
               </span>
-              <button class="js-cal-option btn btn-default {{: first.toDateInt() <= today.toDateInt() && today.toDateInt() <= last.toDateInt() ? 'active':'' }}" data-date="{{: today.toISOString()}}" data-mode="month">{{: todayname }}</button>
+              <button className="js-cal-option btn btn-default {{: first.toDateInt() <= today.toDateInt() && today.toDateInt() <= last.toDateInt() ? 'active':'' }}" data-date="{{: today.toISOString()}}" data-mode="month">{{: todayname }}</button>
             </td>
             <td>
-              <span class="btn-group btn-group-lg">
+              <span className="btn-group btn-group-lg">
                 {{ if (mode !== 'day') { }}
-                  {{ if (mode === 'month') { }}<button class="js-cal-option btn btn-link" data-mode="year">{{: months[month] }}</button>{{ } }}
+                  {{ if (mode === 'month') { }}<button className="js-cal-option btn btn-link" data-mode="year">{{: months[month] }}</button>{{ } }}
                   {{ if (mode ==='week') { }}
-                    <button class="btn btn-link disabled">{{: shortMonths[first.getMonth()] }} {{: first.getDate() }} - {{: shortMonths[last.getMonth()] }} {{: last.getDate() }}</button>
+                    <button className="btn btn-link disabled">{{: shortMonths[first.getMonth()] }} {{: first.getDate() }} - {{: shortMonths[last.getMonth()] }} {{: last.getDate() }}</button>
                   {{ } }}
-                  <button class="js-cal-years btn btn-link">{{: year}}</button>
+                  <button className="js-cal-years btn btn-link">{{: year}}</button>
                 {{ } else { }}
-                  <button class="btn btn-link disabled">{{: date.toDateString() }}</button>
+                  <button className="btn btn-link disabled">{{: date.toDateString() }}</button>
                 {{ } }}
               </span>
             </td>
             <td style="text-align: right">
-              <span class="btn-group">
-                <button class="js-cal-option btn btn-default {{: mode==='year'? 'active':'' }}" data-mode="year">Year</button>
-                <button class="js-cal-option btn btn-default {{: mode==='month'? 'active':'' }}" data-mode="month">Month</button>
-                <button class="js-cal-option btn btn-default {{: mode==='week'? 'active':'' }}" data-mode="week">Week</button>
-                <button class="js-cal-option btn btn-default {{: mode==='day'? 'active':'' }}" data-mode="day">Day</button>
+              <span className="btn-group">
+                <button className="js-cal-option btn btn-default {{: mode==='year'? 'active':'' }}" data-mode="year">Year</button>
+                <button className="js-cal-option btn btn-default {{: mode==='month'? 'active':'' }}" data-mode="month">Month</button>
+                <button className="js-cal-option btn btn-default {{: mode==='week'? 'active':'' }}" data-mode="week">Week</button>
+                <button className="js-cal-option btn btn-default {{: mode==='day'? 'active':'' }}" data-mode="day">Day</button>
               </span>
             </td>
           </tr>
@@ -211,7 +215,7 @@ if (mode === 'week') {
     {{ for (j = 0; j < 3; j++) { }}
     <tr>
       {{ for (i = 0; i < 4; i++) { }}
-      <td class="calendar-month month-{{:month}} js-cal-option" data-date="{{: new Date(year, month, 1).toISOString() }}" data-mode="month">
+      <td className="calendar-month month-{{:month}} js-cal-option" data-date="{{: new Date(year, month, 1).toISOString() }}" data-mode="month">
         {{: months[month] }}
         {{ month++;}}
       </td>
@@ -222,9 +226,9 @@ if (mode === 'week') {
   {{ } }}
   {{ if (mode ==='month' || mode ==='week') { }}
   <thead>
-    <tr class="c-weeks">
+    <tr className="c-weeks">
       {{ for (i = 0; i < 7; i++) { }}
-        <th class="c-name">
+        <th className="c-name">
           {{: days[i] }}
         </th>
       {{ } }}
@@ -234,9 +238,9 @@ if (mode === 'week') {
     {{ for (j = 0; j < 6 && (j < 1 || mode === 'month'); j++) { }}
     <tr>
       {{ for (i = 0; i < 7; i++) { }}
-      {{ if (thedate > last) { dayclass = nextmonthcss; } else if (thedate >= first) { dayclass = thismonthcss; } }}
-      <td class="calendar-day {{: dayclass }} {{: thedate.toDateCssClass() }} {{: date.toDateCssClass() === thedate.toDateCssClass() ? 'selected':'' }} {{: daycss[i] }} js-cal-option" data-date="{{: thedate.toISOString() }}">
-        <div class="date">{{: thedate.getDate() }}</div>
+      {{ if (thedate > last) { dayclassName = nextmonthcss; } else if (thedate >= first) { dayclassName = thismonthcss; } }}
+      <td className="calendar-day {{: dayclassName }} {{: thedate.toDateCssclassName() }} {{: date.toDateCssclassName() === thedate.toDateCssclassName() ? 'selected':'' }} {{: daycss[i] }} js-cal-option" data-date="{{: thedate.toISOString() }}">
+        <div className="date">{{: thedate.getDate() }}</div>
         {{ thedate.setDate(thedate.getDate() + 1);}}
       </td>
       {{ } }}
@@ -248,7 +252,7 @@ if (mode === 'week') {
   <tbody>
     <tr>
       <td colspan="7">
-        <table class="table table-striped table-condensed table-tight-vert" >
+        <table className="table table-striped table-condensed table-tight-vert" >
           <thead>
             <tr>
               <th>&nbsp;</th>
@@ -257,26 +261,26 @@ if (mode === 'week') {
           </thead>
           <tbody>
             <tr>
-              <th class="timetitle" >All Day</th>
-              <td class="{{: date.toDateCssClass() }}">  </td>
+              <th className="timetitle" >All Day</th>
+              <td className="{{: date.toDateCssclassName() }}">  </td>
             </tr>
             <tr>
-              <th class="timetitle" >Before 6 AM</th>
-              <td class="time-0-0"> </td>
+              <th className="timetitle" >Before 6 AM</th>
+              <td className="time-0-0"> </td>
             </tr>
             {{for (i = 6; i < 22; i++) { }}
             <tr>
-              <th class="timetitle" >{{: i <= 12 ? i : i - 12 }} {{: i < 12 ? "AM" : "PM"}}</th>
-              <td class="time-{{: i}}-0"> </td>
+              <th className="timetitle" >{{: i <= 12 ? i : i - 12 }} {{: i < 12 ? "AM" : "PM"}}</th>
+              <td className="time-{{: i}}-0"> </td>
             </tr>
             <tr>
-              <th class="timetitle" >{{: i <= 12 ? i : i - 12 }}:30 {{: i < 12 ? "AM" : "PM"}}</th>
-              <td class="time-{{: i}}-30"> </td>
+              <th className="timetitle" >{{: i <= 12 ? i : i - 12 }}:30 {{: i < 12 ? "AM" : "PM"}}</th>
+              <td className="time-{{: i}}-30"> </td>
             </tr>
             {{ } }}
             <tr>
-              <th class="timetitle" >After 10 PM</th>
-              <td class="time-22-0"> </td>
+              <th className="timetitle" >After 10 PM</th>
+              <td className="time-22-0"> </td>
             </tr>
           </tbody>
         </table>
