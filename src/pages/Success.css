@@ -1,0 +1,22 @@
+.success__container {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#success__title {
+  color: green;
+}
+#success__link {
+  font-weight: bold;
+  text-decoration: underline;
+  color: blue;
+  margin: 0 0.5em;
+}
+
+#success__paragraph {
+  width: 50%;
+  text-align: center;
+}
