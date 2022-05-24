@@ -7,6 +7,8 @@ import card from "../assets/imgs/card.svg";
 import lecturer from "../assets/imgs/mohamed ahmed.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import "bootstrap/dist/css/bootstrap.css";
+
 const Home = () => {
   return (
     <div className="home">

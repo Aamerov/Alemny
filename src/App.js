@@ -1,4 +1,4 @@
-import Navbar from "./components/Navbar";
+import NavbarC from "./components/NavbarC";
 import Footer from "./components/Footer/Footer";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Navbar />
+        <NavbarC />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />

@@ -1,0 +1,52 @@
+[debug] [2022-05-20T09:56:51.784Z] ----------------------------------------------------------------------
+[debug] [2022-05-20T09:56:51.791Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Yousoufm\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2022-05-20T09:56:51.792Z] CLI Version:   10.9.2
+[debug] [2022-05-20T09:56:51.793Z] Platform:      win32
+[debug] [2022-05-20T09:56:51.793Z] Node Version:  v16.14.0
+[debug] [2022-05-20T09:56:51.802Z] Time:          Fri May 20 2022 11:56:51 GMT+0200 (Eastern European Standard Time)
+[debug] [2022-05-20T09:56:51.803Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-05-20T09:56:51.813Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2022-05-20T09:56:52.054Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-05-20T09:56:52.054Z] > authorizing via signed-in user (yousoufmostafamuslim@gmail.com)
+[debug] [2022-05-20T09:56:52.055Z] [iam] checking project alaminilms for permissions ["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2022-05-20T09:56:52.056Z] > refreshing access token with scopes: []
+[debug] [2022-05-20T09:56:52.057Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2022-05-20T09:56:52.087Z] FetchError: request to https://firebase-public.firebaseio.com/cli.json failed, reason: getaddrinfo ENOTFOUND firebase-public.firebaseio.com
+    at ClientRequest.<anonymous> (C:\Users\Yousoufm\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\node-fetch\lib\index.js:1491:11)
+    at ClientRequest.emit (node:events:520:28)
+    at ClientRequest.emit (node:domain:475:12)
+    at TLSSocket.socketErrorListener (node:_http_client:442:9)
+    at TLSSocket.emit (node:events:520:28)
+    at TLSSocket.emit (node:domain:475:12)
+    at emitErrorNT (node:internal/streams/destroy:157:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:122:3)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+[error] 
+[error] Error: Failed to make request to https://firebase-public.firebaseio.com/cli.json
+[debug] [2022-05-20T09:56:52.104Z] [iam] error while checking permissions, command may fail: FirebaseError: Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[debug] [2022-05-20T09:56:52.106Z] > refreshing access token with scopes: []
+[debug] [2022-05-20T09:56:52.107Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2022-05-20T09:56:52.126Z] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[debug] [2022-05-20T09:56:52.130Z] FirebaseError: Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+    at invalidCredentialError (C:\Users\Yousoufm\AppData\Roaming\npm\node_modules\firebase-tools\lib\auth.js:145:12)
+    at refreshTokens (C:\Users\Yousoufm\AppData\Roaming\npm\node_modules\firebase-tools\lib\auth.js:485:15)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async Client.getAccessToken (C:\Users\Yousoufm\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:147:23)
+    at async Client.addAuthHeader (C:\Users\Yousoufm\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:138:21)
+    at async Client.request (C:\Users\Yousoufm\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:94:34)
+    at async getFirebaseProject (C:\Users\Yousoufm\AppData\Roaming\npm\node_modules\firebase-tools\lib\management\projects.js:290:21)
+    at async getDefaultHostingSite (C:\Users\Yousoufm\AppData\Roaming\npm\node_modules\firebase-tools\lib\getDefaultHostingSite.js:8:21)
+    at async requireHostingSite (C:\Users\Yousoufm\AppData\Roaming\npm\node_modules\firebase-tools\lib\requireHostingSite.js:9:18)
+    at async Object.fn (C:\Users\Yousoufm\AppData\Roaming\npm\node_modules\firebase-tools\lib\commands\deploy.js:73:9)
+    at async C:\Users\Yousoufm\AppData\Roaming\npm\node_modules\firebase-tools\lib\command.js:188:17
+[error] 
+[error] Error: Failed to get Firebase project alaminilms. Please make sure the project exists and your account has permission to access it.
