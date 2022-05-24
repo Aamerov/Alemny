@@ -2,7 +2,7 @@
 import "./Success.css";
 const Success = () => {
   return (
-    <div className="success__container">
+    <div className="success__container" id="comingsoon__container">
       <h1 id="success__title">Success</h1>
       <p id="success__paragraph">
         Welcome to Alamini Academy , someone from support team will contact you

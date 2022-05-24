@@ -1,15 +1,52 @@
+import card from "../assets/imgs/card.svg";
+import { Link } from "react-router-dom";
 import hero from "../assets/imgs/hero-img.svg";
+import { getDownloadURL, ref } from "firebase/storage";
+import { storage, db } from "../firebase-config";
+import { collection, query, getDocs, doc, updateDoc } from "firebase/firestore";
 import community from "../assets/imgs/COMMU-removebg-preview.png";
 import intrast from "../assets/imgs/INTRAST-removebg-preview.png";
 import alex from "../assets/imgs/ALEX-removebg-preview.png";
 import udemy from "../assets/imgs/udemy-2-logo 1.png";
-import card from "../assets/imgs/card.svg";
 import lecturer from "../assets/imgs/mohamed ahmed.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import "bootstrap/dist/css/bootstrap.css";
-
+import { useEffect, useState } from "react";
 const Home = () => {
+  const [coursesData, setCoursesData] = useState(null);
+
+  useEffect(() => {
+    console.log("fired");
+
+    const fetchData = async () => {
+      const coursesData0 = [];
+      const q = query(collection(db, "featuredCourses"));
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((docu) => {
+        coursesData0.push(docu.data());
+        const fetchImage = async () => {
+          const courseImages = [];
+          await getDownloadURL(ref(storage, `images/${docu.id}.jpg`)).then(
+            (url) => {
+              const featuredCoursesRef = doc(
+                db,
+                "featuredCourses",
+                `${docu.id}`
+              );
+              updateDoc(featuredCoursesRef, {
+                image: url,
+              });
+              courseImages.push(url);
+            }
+          );
+        };
+        fetchImage();
+        setCoursesData(coursesData0);
+      });
+    };
+    fetchData();
+  }, []);
   return (
     <div className="home">
       <header className="d-flex align-items-center justify-content-center text-white">
@@ -55,68 +92,66 @@ const Home = () => {
       <section id="stacks">
         <div className="container">
           <h2 className="section__title">OUR STACKS</h2>
-          <nav className="nav-tabs">
-            <a
-              className="nav-link"
-              aria-current="page"
-              href="./pages/explore.html"
-            >
+          <div className="nav-tabs">
+            <Link className="nav-link" aria-current="page" to="/explore">
               SOFTWARE ENGINEER
-            </a>
-            <a className="nav-link mx-3" href="./pages/explore.html">
+            </Link>
+            <Link to="/explore" className="nav-link">
               BUSINESS
-            </a>
-            <a className="nav-link" href="./pages/explore.html">
+            </Link>
+            <Link to="/explore" className="nav-link">
               ACCOUNTING
-            </a>
-            <a className="nav-link mx-3" href="./pages/explore.html">
+            </Link>
+            <Link to="/explore" className="nav-link">
               DATA SCIENCE
-            </a>
-            <a className="nav-link me-3" href="./pages/explore.html">
+            </Link>
+            <Link to="/explore" className="nav-link">
               ROBOT ENGINEER
-            </a>
-            <a className="nav-link" href="./pages/explore.html">
-              STATISTICIAN{" "}
-            </a>
-          </nav>
-          <div className="owl-carousel row w-100 mx-0">
-            <div className="card">
-              <img src={card} className="card-img-top" alt="..." />
-              <span className="label">POPULAR</span>
-              <div className="card-body">
-                <div className="d-flex align-items-center justify-content-between">
-                  <a href="./pages/explore.html">
-                    <h5 className="card-title">ROBOT ENGINEER</h5>
-                  </a>
-                  <div className="d-flex align-items-center">
-                    <i className="fa-regular fa-clock"></i>
-                    <span className="ms-2">6-hrs</span>
-                  </div>
-                </div>
-                <div className="teacher-info d-flex align-items-center justify-content-between">
-                  <div className="d-flex align-items-center">
-                    <img src={lecturer} alt="" />
-                    <span className="me-2">Mohamed Ahmed</span>
-                  </div>
-                  <div className="d-flex align-items-end">
-                    <FontAwesomeIcon icon={faStar} />
-                    <FontAwesomeIcon icon={faStar} />
-                    <FontAwesomeIcon icon={faStar} />
-                    <FontAwesomeIcon icon={faStar} />
-                    <FontAwesomeIcon icon={faStar} />
-                    <span className="ms-3">4.1(5000)</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+            </Link>
+            <Link to="/explore" className="nav-link">
+              STATISTICIAN
+            </Link>
           </div>
-        </div>
-      </section>
-
-      <section id="calender">
-        <div className="container theme-showcase">
-          <h2 className="section__title">UPCOMING EVENTS</h2>
-          <div id="holder" className="row"></div>
+          <div className="owl-carousel row w-100 mx-0">
+            {coursesData &&
+              coursesData.map((courseData, index) => {
+                return (
+                  <div className="card" key={index}>
+                    <img
+                      src={courseData.image}
+                      className="card-img-top"
+                      alt="..."
+                    />
+                    <span className="label">POPULAR</span>
+                    <div className="card-body">
+                      <div className="d-flex align-items-center justify-content-between">
+                        <a href="./pages/explore.html">
+                          <h5 className="card-title">{courseData.name} </h5>
+                        </a>
+                        <div className="d-flex align-items-center">
+                          <i className="fa-regular fa-clock"></i>
+                          <span className="ms-2">{courseData.time} </span>
+                        </div>
+                      </div>
+                      <div className="teacher-info d-flex align-items-center justify-content-between">
+                        <div className="d-flex align-items-center">
+                          <img src={lecturer} alt="" />
+                          <span className="me-2">{courseData.lecturer} </span>
+                        </div>
+                        <div className="d-flex align-items-end" id="rating">
+                          <FontAwesomeIcon icon={faStar} />
+                          <FontAwesomeIcon icon={faStar} />
+                          <FontAwesomeIcon icon={faStar} />
+                          <FontAwesomeIcon icon={faStar} />
+                          <FontAwesomeIcon icon={faStar} />
+                          <span className="ms-3">{courseData.ratings} </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+          </div>
         </div>
       </section>
       <section id="learn-more">
@@ -127,11 +162,9 @@ const Home = () => {
                 <h2 className="fw-bolder text-white col-md-11">
                   JOIN MORE THAN TWENTY THOUSAND STUDENTS
                 </h2>
-                <a href="./pages/register.html">
-                  <button className="btn btn-primary" id="calltoaction__button">
-                    JOIN NOW
-                  </button>
-                </a>
+                <div id="join-now__container">
+                  <button id="calltoaction__button">JOIN NOW</button>
+                </div>
               </div>
             </div>
           </div>
@@ -142,154 +175,3 @@ const Home = () => {
 };
 
 export default Home;
-
-{
-  /* <script type="text/tmpl" id="tmpl">
-{{
-var date = date || new Date(),
-    month = date.getMonth(),
-    year = date.getFullYear(),
-    first = new Date(year, month, 1),
-    last = new Date(year, month + 1, 0),
-    startingDay = first.getDay(),
-    thedate = new Date(year, month, 1 - startingDay),
-    dayclassName = lastmonthcss,
-    today = new Date(),
-    i, j;
-if (mode === 'week') {
-  thedate = new Date(date);
-  thedate.setDate(date.getDate() - date.getDay());
-  first = new Date(thedate);
-  last = new Date(thedate);
-  last.setDate(last.getDate()+6);
-} else if (mode === 'day') {
-  thedate = new Date(date);
-  first = new Date(thedate);
-  last = new Date(thedate);
-  last.setDate(thedate.getDate() + 1);
-}
-
-}}
-<table className="calendar-table table table-condensed table-tight">
-  <thead>
-    <tr>
-      <td colspan="7" style="text-align: center">
-        <table style="white-space: nowrap; width: 100%">
-          <tr>
-            <td style="text-align: left;">
-              <span className="btn-group">
-                <button className="js-cal-prev btn btn-default">&lt;</button>
-                <button className="js-cal-next btn btn-default">&gt;</button>
-              </span>
-              <button className="js-cal-option btn btn-default {{: first.toDateInt() <= today.toDateInt() && today.toDateInt() <= last.toDateInt() ? 'active':'' }}" data-date="{{: today.toISOString()}}" data-mode="month">{{: todayname }}</button>
-            </td>
-            <td>
-              <span className="btn-group btn-group-lg">
-                {{ if (mode !== 'day') { }}
-                  {{ if (mode === 'month') { }}<button className="js-cal-option btn btn-link" data-mode="year">{{: months[month] }}</button>{{ } }}
-                  {{ if (mode ==='week') { }}
-                    <button className="btn btn-link disabled">{{: shortMonths[first.getMonth()] }} {{: first.getDate() }} - {{: shortMonths[last.getMonth()] }} {{: last.getDate() }}</button>
-                  {{ } }}
-                  <button className="js-cal-years btn btn-link">{{: year}}</button>
-                {{ } else { }}
-                  <button className="btn btn-link disabled">{{: date.toDateString() }}</button>
-                {{ } }}
-              </span>
-            </td>
-            <td style="text-align: right">
-              <span className="btn-group">
-                <button className="js-cal-option btn btn-default {{: mode==='year'? 'active':'' }}" data-mode="year">Year</button>
-                <button className="js-cal-option btn btn-default {{: mode==='month'? 'active':'' }}" data-mode="month">Month</button>
-                <button className="js-cal-option btn btn-default {{: mode==='week'? 'active':'' }}" data-mode="week">Week</button>
-                <button className="js-cal-option btn btn-default {{: mode==='day'? 'active':'' }}" data-mode="day">Day</button>
-              </span>
-            </td>
-          </tr>
-        </table>
-
-      </td>
-    </tr>
-  </thead>
-  {{ if (mode ==='year') {
-    month = 0;
-  }}
-  <tbody>
-    {{ for (j = 0; j < 3; j++) { }}
-    <tr>
-      {{ for (i = 0; i < 4; i++) { }}
-      <td className="calendar-month month-{{:month}} js-cal-option" data-date="{{: new Date(year, month, 1).toISOString() }}" data-mode="month">
-        {{: months[month] }}
-        {{ month++;}}
-      </td>
-      {{ } }}
-    </tr>
-    {{ } }}
-  </tbody>
-  {{ } }}
-  {{ if (mode ==='month' || mode ==='week') { }}
-  <thead>
-    <tr className="c-weeks">
-      {{ for (i = 0; i < 7; i++) { }}
-        <th className="c-name">
-          {{: days[i] }}
-        </th>
-      {{ } }}
-    </tr>
-  </thead>
-  <tbody>
-    {{ for (j = 0; j < 6 && (j < 1 || mode === 'month'); j++) { }}
-    <tr>
-      {{ for (i = 0; i < 7; i++) { }}
-      {{ if (thedate > last) { dayclassName = nextmonthcss; } else if (thedate >= first) { dayclassName = thismonthcss; } }}
-      <td className="calendar-day {{: dayclassName }} {{: thedate.toDateCssclassName() }} {{: date.toDateCssclassName() === thedate.toDateCssclassName() ? 'selected':'' }} {{: daycss[i] }} js-cal-option" data-date="{{: thedate.toISOString() }}">
-        <div className="date">{{: thedate.getDate() }}</div>
-        {{ thedate.setDate(thedate.getDate() + 1);}}
-      </td>
-      {{ } }}
-    </tr>
-    {{ } }}
-  </tbody>
-  {{ } }}
-  {{ if (mode ==='day') { }}
-  <tbody>
-    <tr>
-      <td colspan="7">
-        <table className="table table-striped table-condensed table-tight-vert" >
-          <thead>
-            <tr>
-              <th>&nbsp;</th>
-              <th style="text-align: center; width: 100%">{{: days[date.getDay()] }}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th className="timetitle" >All Day</th>
-              <td className="{{: date.toDateCssclassName() }}">  </td>
-            </tr>
-            <tr>
-              <th className="timetitle" >Before 6 AM</th>
-              <td className="time-0-0"> </td>
-            </tr>
-            {{for (i = 6; i < 22; i++) { }}
-            <tr>
-              <th className="timetitle" >{{: i <= 12 ? i : i - 12 }} {{: i < 12 ? "AM" : "PM"}}</th>
-              <td className="time-{{: i}}-0"> </td>
-            </tr>
-            <tr>
-              <th className="timetitle" >{{: i <= 12 ? i : i - 12 }}:30 {{: i < 12 ? "AM" : "PM"}}</th>
-              <td className="time-{{: i}}-30"> </td>
-            </tr>
-            {{ } }}
-            <tr>
-              <th className="timetitle" >After 10 PM</th>
-              <td className="time-22-0"> </td>
-            </tr>
-          </tbody>
-        </table>
-      </td>
-    </tr>
-  </tbody>
-  {{ } }}
-</table>
-</script> */
-}

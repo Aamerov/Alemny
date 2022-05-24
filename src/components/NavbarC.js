@@ -7,7 +7,7 @@ const NavbarC = () => {
     <Navbar bg="light" varain="light" sticky="top" expand="lg">
       <Navbar.Brand>
         <Link to="/">
-          <img src={logo} alt="logo" width="40px" height="40px" />
+          <img src={logo} alt="logo" id="logo" />
         </Link>
       </Navbar.Brand>
       <Navbar.Toggle />

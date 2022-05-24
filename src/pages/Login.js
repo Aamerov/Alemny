@@ -88,7 +88,7 @@ const Login = () => {
           </div>
         </div>
       </section>
-      {redirectS && <Navigate to="/" replace={true} />}
+      {redirectS && <Navigate to="/comingsoon" replace={true} />}
     </div>
   );
 };
